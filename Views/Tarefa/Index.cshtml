@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TarefasMVC.Models.Tarefa>
+
+@{
+    ViewData["Title"] = "Listagem de tarefas";
+}
+
+<h2>Tarefas</h2>
+
+<hr />
+
+<p>
+    <a asp-action="Criar">Nova Tarefa</a>
+</p>
+
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Status)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-action="Deletar" asp-route-id="@item.Id">Deletar</a>                     
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
